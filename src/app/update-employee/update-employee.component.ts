@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
-import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-employee-details',
-  templateUrl: './employee-details.component.html',
-  styleUrls: ['./employee-details.component.css']
+  selector: 'app-update-employee',
+  templateUrl: './update-employee.component.html',
+  styleUrls: ['./update-employee.component.css']
 })
-export class EmployeeDetailsComponent implements OnInit {
+export class UpdateEmployeeComponent implements OnInit {
 
-  id: number;
   employee: Employee;
+  id: number;
 
   constructor(private route: ActivatedRoute,private router: Router,
     private employeeService: EmployeeService) { }
@@ -28,13 +28,19 @@ export class EmployeeDetailsComponent implements OnInit {
       }, error => console.log(error));
   }
 
-  list(){
-    this.router.navigate(['employees']);
+  onSubmit(){
+    this.update();
   }
 
-  update(id: number){
-    this.router.navigate(['update', id]);
+  update(){
+    this.employeeService.updateEmployee(this.employee.id, this.employee)
+    .subscribe(data => console.log(data), error => console.log(error));
+    this.employee = new Employee();
+    this.gotoList();
+  }
 
+  gotoList() {
+    this.router.navigate(['/employees']);
   }
 
 }
