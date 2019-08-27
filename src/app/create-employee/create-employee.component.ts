@@ -14,15 +14,11 @@ import { CountryDetail } from '../countrydetail';
 export class CreateEmployeeComponent implements OnInit {
 
   //employee: Employee;
+  //initialized employee so that null values are sent to ui when loaded for the first time
   employee: Employee = {id:0, firstName: '', lastName: '', emailId:'',active: false,
                         address:{id:0, addressLine1:'', addressLine2:'',
                         country:{id:0, city:'', state:'', country:''}}}
   submitted = false;
-  
-  address: Address= {id:0, addressLine1:'', addressLine2:'',
-                    country:{id:0, city:'', state:'', country:''}}
-
-  country: CountryDetail= {id:0, city:'', state:'', country:''}
 
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
@@ -38,28 +34,16 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   save() {
-    console.log(this.employee.address.addressLine1);
-    
-    this.employeeService.createEmployee(this.employee)
+     this.employeeService.createEmployee(this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
     this.employee = new Employee();
-    this.gotoList();
+    this.employee.address = new Address();
+    this.employee.address.country = new CountryDetail();
+    //this.gotoList();
   }
 
   onSubmit() {
-    console.log("trying to print country in create emp componenet: "+this.country.city);
     this.submitted = true;
-    this.employee.address = new Address();
-    this.employee.address.addressLine1 = this.address.addressLine1;
-    this.employee.address.addressLine2 = this.address.addressLine2;
-    this.employee.address.country = new CountryDetail();
-    console.log("trying to print this.employee.address.country in create emp componenet: "+this.employee.address.country);
-    this.employee.address.country.city = this.country.city;
-    console.log("trying to print this.employee.address.country.city in create emp componenet: "+this.employee.address.country.city);
-    this.employee.address.country.state = this.country.state;
-    console.log("trying to print this.employee.address.country.state in create emp componenet: "+this.employee.address.country.state);
-    this.employee.address.country.country = this.country.country;
-    console.log("trying to print this.employee.address.country.country in create emp componenet: "+this.employee.address.country.country);
     this.save();    
   }
 

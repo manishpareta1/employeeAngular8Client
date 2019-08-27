@@ -9,7 +9,10 @@ export class EmployeeService {
 
   private baseUrl = 'http://localhost:8080/employeespringbootapi/api/v1/employees';
 
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient) { 
+    
+  }
 
   getEmployee(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
