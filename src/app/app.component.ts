@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiConstants } from './api.constants';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Employee-Angular7-Client';
+  title = ApiConstants.APP_TITLE;
 }

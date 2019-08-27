@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
+import { ApiConstants } from '../api.constants';
 
 @Component({
   selector: 'app-employee-list',
@@ -15,7 +16,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
   ngOnInit() {
-    console.log("Calling ngOnInit inside emp list");
+    //console.log("Calling ngOnInit inside emp list");
     this.reloadData();
   }
 
@@ -34,7 +35,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   employeeDetails(id: number){
-    this.router.navigate(['details', id]);
+    this.router.navigate([ApiConstants.EMP_DETAIL_ROUTE, id]);
   }
 
 }

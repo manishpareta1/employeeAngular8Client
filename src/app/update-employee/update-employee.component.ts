@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ApiConstants } from '../api.constants';
 
 @Component({
   selector: 'app-update-employee',
@@ -38,7 +39,7 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/'+ApiConstants.EMP_HOME_ROUTE]);
   }
 
 }

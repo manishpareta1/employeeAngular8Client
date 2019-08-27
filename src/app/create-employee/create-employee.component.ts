@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { Address } from '../address';
 import { CountryDetail } from '../countrydetail';
+import { ApiConstants } from '../api.constants';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['/'+ApiConstants.EMP_HOME_ROUTE]);
   }
 
 }

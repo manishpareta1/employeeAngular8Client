@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
+import { ApiConstants } from '../api.constants';
 
 @Component({
   selector: 'app-employee-details',
@@ -29,11 +30,11 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['employees']);
+    this.router.navigate([ApiConstants.EMP_HOME_ROUTE]);
   }
 
   update(id: number){
-    this.router.navigate(['update', id]);
+    this.router.navigate([ApiConstants.EMP_UPDATE_ROUTE, id]);
 
   }
 
